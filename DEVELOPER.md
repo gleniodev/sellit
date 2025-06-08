@@ -44,7 +44,7 @@ cd sellit
 
 ## Instalar as dependências
 
-```
+```bash
 npm install
 ```
 ---
@@ -54,31 +54,35 @@ Certifique-se de ter o Docker e Docker Compose instalados.
 
 ```bash
 docker compose up -d
-```bash
+```
 Isso iniciará um container com PostgreSQL na porta 5432.
 
-4## Configurar variáveis de ambiente
+---
+
+## Configurar variáveis de ambiente
 Crie um arquivo .env na raiz com o seguinte conteúdo:
 
 ```bash
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/sellit
-```bash
+```
+---
 
 ## Gerar e aplicar migrations
 
 ```bash
 npx drizzle-kit generate
 npx drizzle-kit push
-```bash
+```
+---
 
 ## Rodar a aplicação
 
 ```bash
 npm run dev
-```bash
+```
 
 A API estará disponível em:
 
 ```bash
 http://localhost:3000/api/products
-```bash
+```

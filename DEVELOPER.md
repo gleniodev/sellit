@@ -86,3 +86,90 @@ A API estará disponível em:
 ```bash
 http://localhost:3000/api/products
 ```
+---
+# 📌 Endpoints implementados
+
+## POST /api/products
+
+Descrição: Cria um novo produto.
+
+Body esperado:
+```bash
+{
+  "category_id": "ULID",
+  "name": "string",
+  "description": "string",
+  "producer_name": "string",
+  "producer_email": "string",
+  "cover": "url",
+  "thumbnail": "url",
+  "price": number
+}
+```
+Resposta: 201 Created com os dados do produto criado.
+
+---
+
+## GET /api/products/:id
+
+**Descrição:** Retorna um produto específico pelo seu ID.
+
+**Resposta:**
+
+- 200 OK com os dados do produto.
+
+- 404 Not Found se o produto não existir.
+
+---
+
+## GET /api/products?term=xxx
+
+**Descrição:** Busca o produto que mais se aproxime do termo informado no campo name ou producer_name.
+
+**Resposta:**
+
+- 200 OK com os dados do produto mais relevante.
+
+- 404 Not Found se nenhum produto for encontrado.
+
+---
+
+# 🔍 Considerações de implementação
+
+- Utilização de ulid() para geração de IDs únicos e ordenáveis.
+
+- Conversão explícita de price para string no insert e para number na resposta, devido ao comportamento do tipo numeric no PostgreSQL.
+
+- Uso de InferInsertModel do Drizzle para garantir tipagem correta nas operações de insert.
+
+- Datas created_at e updated_at retornadas em formato ISO 8601, conforme padrão do desafio.
+
+- Busca textual implementada com ILIKE no PostgreSQL para garantir busca case-insensitive e flexível.
+
+- Aplicação projetada com foco em separação de responsabilidades, legibilidade e extensibilidade.
+
+---
+
+# 🛠️ Possíveis melhorias futuras
+
+- Implementação de paginação para buscas múltiplas.
+
+- Inclusão de testes automatizados com Jest + Supertest.
+
+- Implementação de cache em consultas frequentes.
+
+- Deploy automatizado com CI/CD.
+
+---
+
+# 🚀 Deploy em produção
+
+**Para ambiente de produção, recomenda-se:**
+
+- Uso de banco de dados gerenciado (ex: Supabase, Railway, NeonDB).
+
+- Variáveis de ambiente seguras e não comitadas.
+
+- Configuração adequada de CORS e segurança.
+
+- Monitoramento de performance da API.

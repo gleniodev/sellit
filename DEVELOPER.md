@@ -28,14 +28,15 @@ drizzle.config.ts                        → Configuração do Drizzle ORM
 DEVELOPER.md                             → Documentação técnica do projeto
 docker-compose.yml                       → Serviço PostgreSQL
 .env                                     → Variáveis de ambiente
-```plaintext
+
+```
 ---
 
 # ⚙️ Como rodar o projeto localmente
 
 ## Clonar o repositório
 
-```
+```bash
 git clone https://github.com/gleniodev/sellit.git
 cd sellit
 ```

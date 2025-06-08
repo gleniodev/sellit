@@ -28,7 +28,7 @@ drizzle.config.ts                        → Configuração do Drizzle ORM
 DEVELOPER.md                             → Documentação técnica do projeto
 docker-compose.yml                       → Serviço PostgreSQL
 .env                                     → Variáveis de ambiente
-
+```plaintext
 ---
 
 # ⚙️ Como rodar o projeto localmente

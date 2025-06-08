@@ -29,20 +29,24 @@ DEVELOPER.md                             → Documentação técnica do projeto
 docker-compose.yml                       → Serviço PostgreSQL
 .env                                     → Variáveis de ambiente
 
+---
+
 # ⚙️ Como rodar o projeto localmente
 
 ## Clonar o repositório
 
-```bash
+```
 git clone https://github.com/gleniodev/sellit.git
 cd sellit
-```bash
+```
+---
 
 ## Instalar as dependências
 
-```bash
+```
 npm install
-```bash
+```
+---
 
 ## Subir o banco de dados com Docker
 Certifique-se de ter o Docker e Docker Compose instalados.

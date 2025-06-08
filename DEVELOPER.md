@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 Sellit — Desafio Backend
 
-## Getting Started
+Este repositório contém a implementação do **Desafio de Backend** proposto pela equipe da Sellit.
 
-First, run the development server:
+A aplicação consiste em uma API RESTful desenvolvida com foco em qualidade de código, performance e boas práticas de engenharia.
+
+---
+
+## 🚀 Stack utilizada
+
+- **Next.js** com App Router e TypeScript
+- **PostgreSQL** (via Docker) como banco de dados relacional
+- **Drizzle ORM** como camada de acesso ao banco de dados
+- **Zod** para validação robusta de entrada de dados
+- **Docker Compose** para orquestração local do banco
+
+---
+
+## 🗂️ Estrutura do projeto
+
+```plaintext
+/src/app/api/products/route.ts           → POST /products e GET /products?term=xxx
+/src/app/api/products/[id]/route.ts      → GET /products/:id
+/src/db/schema.ts                        → Definição da tabela products
+/src/db/index.ts                         → Conexão com o banco via Drizzle
+/src/types/product.ts                    → Tipos auxiliares da aplicação
+drizzle.config.ts                        → Configuração do Drizzle ORM
+DEVELOPER.md                             → Documentação técnica do projeto
+docker-compose.yml                       → Serviço PostgreSQL
+.env                                     → Variáveis de ambiente
+
+# ⚙️ Como rodar o projeto localmente
+
+## Clonar o repositório
+
+```bash
+git clone https://github.com/gleniodev/sellit.git
+cd sellit
+```bash
+
+## Instalar as dependências
+
+```bash
+npm install
+```bash
+
+## Subir o banco de dados com Docker
+Certifique-se de ter o Docker e Docker Compose instalados.
+
+```bash
+docker compose up -d
+```bash
+Isso iniciará um container com PostgreSQL na porta 5432.
+
+4## Configurar variáveis de ambiente
+Crie um arquivo .env na raiz com o seguinte conteúdo:
+
+```bash
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/sellit
+```bash
+
+## Gerar e aplicar migrations
+
+```bash
+npx drizzle-kit generate
+npx drizzle-kit push
+```bash
+
+## Rodar a aplicação
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+```bash
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A API estará disponível em:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+http://localhost:3000/api/products
+```bash
